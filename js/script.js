@@ -61,48 +61,35 @@ function addToDo(toDo, id, done, edit, trash){
 
 document.addEventListener("keyup",function(even){
     if(event.keyCode == 13){
-        const toDo = input.value;
-    
-        if(toDo){
-            addToDo(toDo, id, false, false, false);
-            
-            LIST.push({
-                name : toDo,
-                id : id,
-                done : false,
-                edit : false,
-                trash : false
-            });
-            
-            localStorage.setItem("TODO", JSON.stringify(LIST));
-            
-            id++;
-        }
-        input.value = "";
+       out();
     }
 });
 
 addPlus.addEventListener("click", function(addSpan){
-    const toDo = input.value;  
-
-    if(toDo){
-        addToDo(toDo, id, false,  false, false);
-        
-        LIST.push({
-            name : toDo,
-            id : id,
-            done : false,
-            edit : false,
-            trash : false
-        });
-
-        localStorage.setItem("TODO", JSON.stringify(LIST));
-        
-        id++;
-    }
-    input.value = ""; 
+    out();
 
 });
+
+function  out() {
+	const toDo = input.value;
+
+	if(toDo){
+		addToDo(toDo, id, false, false, false);
+		
+		LIST.push({
+			name : toDo,
+			id : id,
+			done : false,
+			edit : false,
+			trash : false
+		});
+		
+		localStorage.setItem("TODO", JSON.stringify(LIST));
+		
+		id++;
+	}
+    input.value = "";
+}
 
 
 function completeToDo(element){
